@@ -24,13 +24,38 @@ export default function Home({ data }) {
             src="../assets/images/profile_picture.webp"
             width={256}
             className="rounded-full m-14"
+            alt="Profile Picture"
           />
         </div>
         <div className="flex flex-row justify-center my-12 md:mt-6">
-          <FaLinkedin className="dark:text-white text-3xl mx-7" />
-          <FaGithub className="dark:text-white text-3xl mx-7" />
-          <FaInstagram className="dark:text-white text-3xl mx-7" />
-          <HiOutlineDocumentText className="dark:text-white text-3xl mx-7" />
+          <a
+            href="https://www.linkedin.com/in/zishu-alex-li-54b35718b/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaLinkedin className="dark:text-white text-3xl mx-7" />
+          </a>
+          <a
+            href="https://github.com/LiAlex-CS"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaGithub className="dark:text-white text-3xl mx-7" />
+          </a>
+          <a
+            href="https://www.instagram.com/li__alexx/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaInstagram className="dark:text-white text-3xl mx-7" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/zishu-alex-li-54b35718b/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <HiOutlineDocumentText className="dark:text-white text-3xl mx-7" />
+          </a>
         </div>
       </div>
     </Layout>

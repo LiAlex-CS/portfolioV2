@@ -1,19 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from "../Context";
+import { FaBars } from "react-icons/fa";
+import { graphql, Link, useStaticQuery } from "gatsby";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
+import { H4 } from "../Typography/Text";
+import ThemeButton from "./ThemeButton";
 
 const Navbar = () => {
+  const { isDarkMode } = useContext(ThemeContext);
+  const data = useStaticQuery(graphql`
+    query LogoQuery {
+      dark: file(relativePath: { eq: "logo_dark.png" }) {
+        childImageSharp {
+          gatsbyImageData
+        }
+      }
+      light: file(relativePath: { eq: "logo_light.png" }) {
+        childImageSharp {
+          gatsbyImageData
+        }
+      }
+    }
+  `);
+
+  const logo = getImage(isDarkMode ? data.dark : data.light);
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900">
+    <nav className="sticky bg-gray-50 border-gray-200 dark:bg-primary-dark-200">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="https://flowbite.com/" className="flex items-center">
-          {/* <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="h-8 mr-3"
-            alt="Flowbite Logo"
-          /> */}
-          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            Alex Li
-          </span>
-        </a>
+        <Link to="/">
+          <GatsbyImage image={logo} alt="logo icon" className="w-10" />
+        </Link>
         <button
           data-collapse-toggle="navbar-default"
           type="button"
@@ -22,63 +38,31 @@ const Navbar = () => {
           aria-expanded="false"
         >
           <span className="sr-only">Open main menu</span>
-          <svg
-            className="w-6 h-6"
-            aria-hidden="true"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-              clip-rule="evenodd"
-            ></path>
-          </svg>
+          <FaBars className="w-6 h-6" />
         </button>
         <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border md:flex-row md:space-x-8 md:mt-0 md:border-0 items-center">
             <li>
-              <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
-                aria-current="page"
-              >
-                Home
-              </a>
+              <Link to="/" aria-current="page">
+                <H4 className="dark:hover:text-blue-500">Home</H4>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
-                About
-              </a>
+              <Link to="/about" aria-current="page">
+                <H4 className="dark:hover:text-blue-500">About Me</H4>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
-                Services
-              </a>
+              <Link to="/experience" aria-current="page">
+                <H4 className="dark:hover:text-blue-500">Experience</H4>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
-                Pricing
-              </a>
+              <Link to="/contact" aria-current="page">
+                <H4 className="dark:hover:text-blue-500">Contact</H4>
+              </Link>
             </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
-                Contact
-              </a>
-            </li>
+            <ThemeButton />
           </ul>
         </div>
       </div>
