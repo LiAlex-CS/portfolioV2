@@ -25,10 +25,14 @@ const Navbar = () => {
 
   const logo = getImage(isDarkMode ? data.dark : data.light);
   return (
-    <nav className="sticky bg-gray-50 border-gray-200 dark:bg-primary-dark-200">
+    <nav className="sticky bg-primary-400 dark:bg-primary-dark-200">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to="/">
-          <GatsbyImage image={logo} alt="logo icon" className="w-10" />
+          <GatsbyImage
+            image={logo}
+            alt="logo icon"
+            className="w-10 transform transition duration-200 hover:scale-110"
+          />
         </Link>
         <button
           data-collapse-toggle="navbar-default"
@@ -44,22 +48,30 @@ const Navbar = () => {
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border md:flex-row md:space-x-8 md:mt-0 md:border-0 items-center">
             <li>
               <Link to="/" aria-current="page">
-                <H4 className="dark:hover:text-blue-500">Home</H4>
+                <H4 className="hover:text-secondary-300 dark:hover:text-secondary-dark-300">
+                  Home
+                </H4>
               </Link>
             </li>
             <li>
               <Link to="/about" aria-current="page">
-                <H4 className="dark:hover:text-blue-500">About Me</H4>
+                <H4 className="hover:text-secondary-300 dark:hover:text-secondary-dark-300">
+                  About Me
+                </H4>
               </Link>
             </li>
             <li>
               <Link to="/experience" aria-current="page">
-                <H4 className="dark:hover:text-blue-500">Experience</H4>
+                <H4 className="hover:text-secondary-300 dark:hover:text-secondary-dark-300">
+                  Experience
+                </H4>
               </Link>
             </li>
             <li>
               <Link to="/contact" aria-current="page">
-                <H4 className="dark:hover:text-blue-500">Contact</H4>
+                <H4 className="hover:text-secondary-300 dark:hover:text-secondary-dark-300">
+                  Contact
+                </H4>
               </Link>
             </li>
             <ThemeButton />

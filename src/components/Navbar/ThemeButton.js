@@ -7,7 +7,7 @@ const ThemeButton = () => {
 
   return (
     <button
-      className="rounded-full p-3 dark:text-white border-2"
+      className="rounded-full p-3 border-primary-300 dark:border-primary-dark-300 text-typography dark:text-typography-dark border-2 hover:border-primary-200 dark:hover:border-primary-dark-400"
       onClick={flipDarkTheme}
     >
       {isDarkMode ? <BsMoon /> : <BsSun />}

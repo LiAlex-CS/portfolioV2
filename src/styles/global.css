@@ -6,3 +6,7 @@ body {
   background: #262626;
   font-family: "Urban", sans-serif;
 }
+
+body * {
+  @apply transition-colors duration-300;
+}

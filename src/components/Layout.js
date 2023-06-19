@@ -8,7 +8,7 @@ export default function Layout({ children }) {
   return (
     <div
       className={`min-h-screen min-w-screen ${
-        isDarkMode ? "bg-primary-dark-100 dark" : "bg-white"
+        isDarkMode ? "dark:bg-primary-dark-100 dark" : "bg-primary-500"
       }`}
     >
       <Navbar />
