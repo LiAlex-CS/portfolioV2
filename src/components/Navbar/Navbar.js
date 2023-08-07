@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ThemeContext } from "../Context";
 import { FaBars } from "react-icons/fa";
 import { graphql, Link, useStaticQuery } from "gatsby";
@@ -8,6 +8,9 @@ import ThemeButton from "./ThemeButton";
 
 const Navbar = () => {
   const { isDarkMode } = useContext(ThemeContext);
+
+  const [navbarOpen, setNavbarOpen] = useState(false);
+
   const data = useStaticQuery(graphql`
     query LogoQuery {
       dark: file(relativePath: { eq: "logo_dark.png" }) {
@@ -25,7 +28,7 @@ const Navbar = () => {
 
   const logo = getImage(isDarkMode ? data.dark : data.light);
   return (
-    <nav className="sticky bg-primary-400 dark:bg-primary-dark-200">
+    <nav className="sticky bg-primary-400 dark:bg-primary-dark-200 top-0 z-50">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to="/">
           <GatsbyImage
@@ -34,17 +37,29 @@ const Navbar = () => {
             className="w-10 transform transition duration-200 hover:scale-110"
           />
         </Link>
-        <button
-          data-collapse-toggle="navbar-default"
-          type="button"
-          className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          aria-controls="navbar-default"
-          aria-expanded="false"
+        <div className="md:hidden flex items-center">
+          <ThemeButton className="mr-2" />
+          <button
+            data-collapse-toggle="navbar-default"
+            type="button"
+            className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            aria-controls="navbar-default"
+            aria-expanded="false"
+            onClick={() => {
+              setNavbarOpen(!navbarOpen);
+            }}
+          >
+            <span className="sr-only">Open main menu</span>
+            <FaBars className="w-6 h-6" />
+          </button>
+        </div>
+
+        <div
+          className={`${
+            navbarOpen ? "" : "hidden"
+          } w-full md:w-auto md:flex md:flex-row`}
+          id="navbar-default"
         >
-          <span className="sr-only">Open main menu</span>
-          <FaBars className="w-6 h-6" />
-        </button>
-        <div className="hidden w-full md:block md:w-auto" id="navbar-default">
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border md:flex-row md:space-x-8 md:mt-0 md:border-0 items-center">
             <li>
               <Link to="/" aria-current="page">
@@ -74,8 +89,8 @@ const Navbar = () => {
                 </H4>
               </Link>
             </li>
-            <ThemeButton />
           </ul>
+          <ThemeButton className="hidden md:block" />
         </div>
       </div>
     </nav>
