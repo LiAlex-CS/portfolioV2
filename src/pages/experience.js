@@ -40,11 +40,11 @@ const ExperienceCard = ({
   detailPoints,
 }) => {
   return (
-    <div className="rounded-3xl bg-primary-400 dark:bg-primary-dark-200 flex flex-row text-start items-center my-8 w-11/12 lg:w-3/4 2xl:w-1/2">
+    <div className="rounded-3xl bg-primary-400 dark:bg-primary-dark-200 flex flex-row flex-wrap text-start items-center my-8 w-11/12 lg:w-3/4 2xl:w-1/2">
       <div className="mx-3">
-        <GatsbyImage image={getImage(imgSrc)} alt={"pic"} />
+        <GatsbyImage image={getImage(imgSrc)} alt={imgSrc.description} />
       </div>
-      <div className="flex flex-col mx-5 flex-auto">
+      <div className="flex flex-col mx-5 flex-1">
         <div className="flex flex-row justify-between items-end my-3">
           <H2>{title}</H2>
           <P>{dateRange}</P>
@@ -66,6 +66,10 @@ const ExperienceCard = ({
 
 export default function Experience(data) {
   const experiences = data.data.allContentfulExperience.nodes;
+  const sortedExperiences = experiences.sort(
+    (experienceA, experienceB) => experienceB.order - experienceA.order
+  );
+
   return (
     <Layout>
       <M.div
@@ -108,7 +112,7 @@ export default function Experience(data) {
           </div>
         </div>
         <H3 className="max-w-lg my-4">Some of my work experiences:</H3>
-        {experiences.map((experience) => (
+        {sortedExperiences.map((experience) => (
           <ExperienceCard
             id={experience.id}
             title={experience.companyName}
@@ -137,6 +141,7 @@ export const query = graphql`
           description
         }
         companyName
+        order
       }
     }
   }
