@@ -73,7 +73,7 @@ export default function Experience(data) {
   return (
     <Layout>
       <M.div
-        className="flex flex-col w-full  text-center items-center"
+        className="flex flex-col w-full text-center items-center"
         initial={fadeIn.initial}
         animate={fadeIn.animate}
         transition={fadeIn.transition}
