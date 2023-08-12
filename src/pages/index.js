@@ -57,9 +57,9 @@ export default function Home({ data }) {
               initial={fadeIn.icons.initial}
               animate={fadeIn.icons.animate}
               transition={{ ...fadeIn.icons.transition, delay: 1 }}
-              className="mx-7 p-3 rounded-full border-2 border-primary-200 dark:border-primary-dark-200 hover:border-secondary-200 dark:hover:border-secondary-dark-400"
+              className="group mx-7 p-3 rounded-full border-2 border-primary-200 dark:border-primary-dark-200 hover:border-secondary-200 dark:hover:border-secondary-dark-400"
             >
-              <FaLinkedin className="text-typography dark:text-typography-dark text-3xl transform transition duration-200 hover:scale-110" />
+              <FaLinkedin className="text-typography dark:text-typography-dark text-3xl transform transition duration-200 group-hover:scale-110" />
             </M.a>
             <M.a
               href="https://github.com/LiAlex-CS"
@@ -68,9 +68,9 @@ export default function Home({ data }) {
               initial={fadeIn.icons.initial}
               animate={fadeIn.icons.animate}
               transition={{ ...fadeIn.icons.transition, delay: 1.3 }}
-              className="mx-7 p-3 rounded-full border-2 border-primary-200 dark:border-primary-dark-200 hover:border-secondary-200 dark:hover:border-secondary-dark-400"
+              className="group mx-7 p-3 rounded-full border-2 border-primary-200 dark:border-primary-dark-200 hover:border-secondary-200 dark:hover:border-secondary-dark-400"
             >
-              <FaGithub className="text-typography dark:text-typography-dark text-3xl transform transition duration-200 hover:scale-110" />
+              <FaGithub className="text-typography dark:text-typography-dark text-3xl transform transition duration-200 group-hover:scale-110" />
             </M.a>
           </div>
           <div className="flex flex-row my-12 md:mt-6">
@@ -81,9 +81,9 @@ export default function Home({ data }) {
               initial={fadeIn.icons.initial}
               animate={fadeIn.icons.animate}
               transition={{ ...fadeIn.icons.transition, delay: 1.6 }}
-              className="mx-7 p-3 rounded-full border-2 border-primary-200 dark:border-primary-dark-200 hover:border-secondary-200 dark:hover:border-secondary-dark-400"
+              className="group mx-7 p-3 rounded-full border-2 border-primary-200 dark:border-primary-dark-200 hover:border-secondary-200 dark:hover:border-secondary-dark-400"
             >
-              <FaInstagram className="text-typography dark:text-typography-dark text-3xl transform transition duration-200 hover:scale-110" />
+              <FaInstagram className="text-typography dark:text-typography-dark text-3xl transform transition duration-200 group-hover:scale-110" />
             </M.a>
             <M.a
               href={resumeUrl}
@@ -92,9 +92,9 @@ export default function Home({ data }) {
               initial={fadeIn.icons.initial}
               animate={fadeIn.icons.animate}
               transition={{ ...fadeIn.icons.transition, delay: 1.9 }}
-              className="mx-7 p-3 rounded-full border-2 border-primary-200 dark:border-primary-dark-200 hover:border-secondary-200 dark:hover:border-secondary-dark-400"
+              className="group mx-7 p-3 rounded-full border-2 border-primary-200 dark:border-primary-dark-200 hover:border-secondary-200 dark:hover:border-secondary-dark-400"
             >
-              <HiOutlineDocumentText className="text-typography dark:text-typography-dark text-3xl transform transition duration-200 hover:scale-110" />
+              <HiOutlineDocumentText className="text-typography dark:text-typography-dark text-3xl transform transition duration-200 group-hover:scale-110" />
             </M.a>
           </div>
         </div>
