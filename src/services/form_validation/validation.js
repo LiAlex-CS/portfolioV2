@@ -83,7 +83,9 @@ export const resetErrorValidation = (
   formFieldErrors,
   setFormFieldErrors
 ) => {
-  let newFormFieldErrors = { ...formFieldErrors };
-  newFormFieldErrors[field] = null;
-  setFormFieldErrors(newFormFieldErrors);
+  if (formFieldErrors[field]) {
+    let newFormFieldErrors = { ...formFieldErrors };
+    newFormFieldErrors[field] = null;
+    setFormFieldErrors(newFormFieldErrors);
+  }
 };
