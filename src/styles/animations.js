@@ -18,3 +18,9 @@ export const spin = {
     transition: { repeat: Infinity, duration: 10, ease: "linear" },
   },
 };
+
+export const translate = {
+  initial: { x: "0%" },
+  animate: { x: "-100%" },
+  transition: { repeat: Infinity, duration: 70, ease: "linear" },
+};

@@ -7,14 +7,15 @@ import { SiGatsby, SiReact, SiTailwindcss, SiContentful } from "react-icons/si";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { graphql } from "gatsby";
 import { twMerge } from "tailwind-merge";
+import { translate } from "../styles/animations";
 
 const ScrollingToolSet = ({ tools, className }) => {
   const ToolsList = () => (
     <M.ul
       className={twMerge("flex flex-row items-center", className)}
-      initial={{ x: "0%" }}
-      animate={{ x: "-100%" }}
-      transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+      initial={translate.initial}
+      animate={translate.animate}
+      transition={translate.transition}
     >
       {tools.map((tool, index) => (
         <li className="flex flex-col mx-10 whitespace-nowrap" key={index}>
@@ -65,11 +66,13 @@ const ExperienceCard = ({
   );
 };
 
-export default function Experience(data) {
-  const experiences = data.data.allContentfulExperience.nodes;
+export default function Experience({ data }) {
+  const experiences = data.allContentfulExperience.nodes;
   const sortedExperiences = experiences.sort(
     (experienceA, experienceB) => experienceB.order - experienceA.order
   );
+
+  const skills = data.allContentfulSkill.nodes.map((node) => node.skill);
 
   return (
     <Layout>
@@ -82,22 +85,7 @@ export default function Experience(data) {
       >
         <Title className="my-16 lg:my-28 xl:my-36">Alex Li: Soft Dev</Title>
         <H3 className="mb-16">Tools that I use:</H3>
-        <ScrollingToolSet
-          className="mb-16"
-          tools={[
-            "React",
-            "JSX",
-            "AWS",
-            "Vue",
-            "Terraform",
-            "Bash",
-            "Redux",
-            "Gatsby",
-            "NextJS",
-            "Ruby on Rails",
-            "Django",
-          ]}
-        />
+        <ScrollingToolSet className="mb-16" tools={skills} />
         <H3 className="max-w-lg">
           As an example, the website you are on is constructed with the
           following tools:
@@ -143,6 +131,11 @@ export const query = graphql`
         }
         companyName
         order
+      }
+    }
+    allContentfulSkill {
+      nodes {
+        skill
       }
     }
   }
