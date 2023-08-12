@@ -37,7 +37,7 @@ const FormInput = ({
         <textarea
           type="text"
           rows={6}
-          className="block p-2.5 w-full text-sm text-typography bg-gray-50 rounded-lg border border-gray-300 focus:ring-secondary-500 focus:border-secondary-500 dark:bg-primary-dark-200 dark:border-gray-600 dark:placeholder-gray-400 dark:text-typography-dark dark:focus:ring-secondary-dark-500 dark:focus:border-secondary-dark-500 focus:outline-none font-[Urbanist]"
+          className="block p-2.5 w-full text-sm text-typography bg-gray-100 rounded-lg border border-gray-300 focus:ring-secondary-500 focus:border-secondary-500 focus:outline-none font-[Urbanist]"
           onChange={(event) => {
             setValue(event.currentTarget.value);
           }}
@@ -48,7 +48,7 @@ const FormInput = ({
       ) : (
         <input
           type={type ?? "text"}
-          className="bg-gray-50 border border-gray-300 text-typography text-sm rounded-lg focus:ring-secondary-500 focus:border-secondary-500 block w-full p-2.5 dark:bg-primary-dark-200 dark:border-gray-600 dark:placeholder-gray-400 dark:text-typography-dark dark:focus:ring-secondary-dark-500 dark:focus:border-secondary-dark-500 focus:outline-none font-[Urbanist]"
+          className="bg-gray-100 border border-gray-300 text-typography text-sm rounded-lg focus:ring-secondary-500 focus:border-secondary-500 block w-full p-2.5 focus:outline-none font-[Urbanist]"
           onChange={(event) => {
             setValue(event.currentTarget.value);
           }}

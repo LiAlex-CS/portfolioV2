@@ -22,5 +22,9 @@ export const spin = {
 export const translate = {
   initial: { x: "0%" },
   animate: { x: "-100%" },
-  transition: { repeat: Infinity, duration: 70, ease: "linear" },
+  transition: (numerOfSkills) => ({
+    repeat: Infinity,
+    duration: (3 / 2) * numerOfSkills + 28,
+    ease: "linear",
+  }),
 };
