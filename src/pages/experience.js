@@ -6,11 +6,12 @@ import { fadeIn } from "../styles/animations";
 import { SiGatsby, SiReact, SiTailwindcss, SiContentful } from "react-icons/si";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { graphql } from "gatsby";
+import { twMerge } from "tailwind-merge";
 
 const ScrollingToolSet = ({ tools, className }) => {
   const ToolsList = () => (
     <M.ul
-      className={`flex flex-row items-center ${className}`}
+      className={twMerge("flex flex-row items-center", className)}
       initial={{ x: "0%" }}
       animate={{ x: "-100%" }}
       transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
