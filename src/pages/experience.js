@@ -15,7 +15,7 @@ const ScrollingToolSet = ({ tools, className }) => {
       className={twMerge("flex flex-row items-center", className)}
       initial={translate.initial}
       animate={translate.animate}
-      transition={translate.transition}
+      transition={translate.transition(tools.length)}
     >
       {tools.map((tool, index) => (
         <li className="flex flex-col mx-10 whitespace-nowrap" key={index}>
@@ -73,6 +73,7 @@ export default function Experience({ data }) {
   );
 
   const skills = data.allContentfulSkill.nodes.map((node) => node.skill);
+  console.log(skills.length);
 
   return (
     <Layout>
