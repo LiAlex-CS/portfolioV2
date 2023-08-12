@@ -197,7 +197,7 @@ export default function Contact({ data }) {
     }
   };
 
-  const [sendingEmailLoading, sendEmail] = useSendEmail({
+  const { sendingEmailLoading, sendEmail } = useSendEmail({
     name: formFields.name,
     email: formFields.email,
     phoneNumber: formatPhoneNumber(formFields.phoneNumber),

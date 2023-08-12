@@ -5,7 +5,7 @@ export const useSendEmail = (options) => {
   useEffect(() => emailjs.init(process.env.EMAIL_PUBLIC_KEY), []);
   const [sendingEmailLoading, setSendingEmailLoading] = useState(false);
 
-  const handleSubmit = async () => {
+  const sendEmail = async () => {
     const SERVICE_ID = "portfolio_email_service";
     const TEMPLATE_ID = "portfolio_contact_email";
 
@@ -19,5 +19,5 @@ export const useSendEmail = (options) => {
     }
   };
 
-  return [sendingEmailLoading, handleSubmit];
+  return { sendingEmailLoading, sendEmail };
 };
