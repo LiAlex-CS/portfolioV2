@@ -13,6 +13,8 @@ import {
   formContainsErrors,
   resetErrorValidation,
 } from "../services/form_validation/validation";
+import { FiAlertCircle } from "react-icons/fi";
+import { BsCheckCircle, BsXCircle } from "react-icons/bs";
 
 const FormInput = ({
   label,
@@ -62,22 +64,48 @@ const FormInput = ({
 const ValidationError = ({ errorMessage }) => {
   if (errorMessage) {
     return (
-      <div>
-        <P className="text-red-600">{errorMessage}</P>
+      <div className="flex flex-row items-center">
+        <FiAlertCircle className="text-red-500 dark:text-red-600 mx-3" />
+        <P className="text-red-500 dark:text-red-600">{errorMessage}</P>
       </div>
     );
+  }
+};
+
+const EmailSentResponseMessage = ({ response }) => {
+  if (response) {
+    if (response.status === 200) {
+      return (
+        <div className="flex flex-row items-center my-4">
+          <BsCheckCircle className="text-green-500 dark:text-green-600 mx-3" />
+          <P className="text-green-500 dark:text-green-600">
+            Your message was sent successfully!
+          </P>
+        </div>
+      );
+    } else {
+      return (
+        <div className="flex flex-row items-center my-4">
+          <BsXCircle className="text-red-500 dark:text-red-600 mx-3" />
+          <P className="text-red-500 dark:text-red-600">
+            There was an error sending your message. Try again later.
+          </P>
+        </div>
+      );
+    }
   }
 };
 
 export default function Contact({ data }) {
   const resumeUrl = data.contentfulFile.file.file.url;
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
-
+  const [formFields, setFormFields] = useState({
+    name: "",
+    email: "",
+    phoneNumber: "",
+    subject: "",
+    message: "",
+  });
   const [formFieldErrors, setFormFieldErrors] = useState({
     name: null,
     email: null,
@@ -85,14 +113,13 @@ export default function Contact({ data }) {
     subject: null,
     message: null,
   });
+  const [sendingEmailResponse, setSendingEmailResponse] = useState(null);
 
-  const [sendingEmailLoading, sendingEmailError, sendEmail] = useSendEmail({
-    name,
-    email,
-    phoneNumber,
-    subject,
-    message,
-  });
+  const setFormField = (field, value) => {
+    const newFormFields = { ...formFields };
+    newFormFields[field] = value;
+    setFormFields(newFormFields);
+  };
 
   const filterOnlyAlphanumeric = (phoneNumber) => {
     return phoneNumber.replace(/[^a-zA-Z0-9]/g, "");
@@ -170,18 +197,58 @@ export default function Contact({ data }) {
     }
   };
 
-  const handleSubmitForm = () => {
+  const [sendingEmailLoading, sendEmail] = useSendEmail({
+    name: formFields.name,
+    email: formFields.email,
+    phoneNumber: formatPhoneNumber(formFields.phoneNumber),
+    subject: formFields.subject,
+    message: formFields.message,
+  });
+
+  const handleSubmitForm = async () => {
     handleValidation(
-      name,
-      email,
-      phoneNumber,
-      subject,
-      message,
+      formFields.name,
+      formFields.email,
+      formFields.phoneNumber,
+      formFields.subject,
+      formFields.message,
       setFormFieldErrors
     );
-    if (!formContainsErrors(name, email, phoneNumber, subject, message)) {
-      alert("Sent email!");
-      // sendEmail();
+    if (
+      !formContainsErrors(
+        formFields.name,
+        formFields.email,
+        formFields.phoneNumber,
+        formFields.subject,
+        formFields.message
+      )
+    ) {
+      try {
+        const sentEmailResponse = await sendEmail();
+        setFormFields({
+          name: "",
+          email: "",
+          phoneNumber: "",
+          subject: "",
+          message: "",
+        });
+        setSendingEmailResponse(sentEmailResponse);
+      } catch (error) {
+        setSendingEmailResponse(error);
+        setFormFields({
+          name: "",
+          email: "",
+          phoneNumber: "",
+          subject: "",
+          message: "",
+        });
+      }
+    }
+  };
+
+  const resetResponse = () => {
+    if (sendingEmailResponse) {
+      setSendingEmailResponse(null);
     }
   };
 
@@ -199,52 +266,40 @@ export default function Contact({ data }) {
         </div>
         <div className="flex flex-row flex-wrap justify-center">
           <div className="flex flex-row my-12 md:mt-6">
-            <M.a
+            <a
               href="https://www.linkedin.com/in/zishu-alex-li-54b35718b/"
               target="_blank"
               rel="noreferrer"
-              initial={fadeIn.icons.initial}
-              animate={fadeIn.icons.animate}
-              transition={{ ...fadeIn.icons.transition, delay: 1 }}
-              className="mx-7 p-3 rounded-full border-2 border-primary-200 dark:border-primary-dark-200 hover:border-secondary-200 dark:hover:border-secondary-dark-400"
+              className="group mx-7 p-3 rounded-full border-2 border-primary-200 dark:border-primary-dark-200 hover:border-secondary-200 dark:hover:border-secondary-dark-400"
             >
-              <FaLinkedin className="text-typography dark:text-typography-dark text-3xl transform transition duration-200 hover:scale-110" />
-            </M.a>
-            <M.a
+              <FaLinkedin className="text-typography dark:text-typography-dark text-3xl transform transition duration-200 group-hover:scale-110" />
+            </a>
+            <a
               href="https://github.com/LiAlex-CS"
               target="_blank"
               rel="noreferrer"
-              initial={fadeIn.icons.initial}
-              animate={fadeIn.icons.animate}
-              transition={{ ...fadeIn.icons.transition, delay: 1.3 }}
-              className="mx-7 p-3 rounded-full border-2 border-primary-200 dark:border-primary-dark-200 hover:border-secondary-200 dark:hover:border-secondary-dark-400"
+              className="group mx-7 p-3 rounded-full border-2 border-primary-200 dark:border-primary-dark-200 hover:border-secondary-200 dark:hover:border-secondary-dark-400"
             >
-              <FaGithub className="text-typography dark:text-typography-dark text-3xl transform transition duration-200 hover:scale-110" />
-            </M.a>
+              <FaGithub className="text-typography dark:text-typography-dark text-3xl transform transition duration-200 group-hover:scale-110" />
+            </a>
           </div>
           <div className="flex flex-row my-12 md:mt-6">
-            <M.a
+            <a
               href="https://www.instagram.com/li__alexx/"
               target="_blank"
               rel="noreferrer"
-              initial={fadeIn.icons.initial}
-              animate={fadeIn.icons.animate}
-              transition={{ ...fadeIn.icons.transition, delay: 1.6 }}
-              className="mx-7 p-3 rounded-full border-2 border-primary-200 dark:border-primary-dark-200 hover:border-secondary-200 dark:hover:border-secondary-dark-400"
+              className="group mx-7 p-3 rounded-full border-2 border-primary-200 dark:border-primary-dark-200 hover:border-secondary-200 dark:hover:border-secondary-dark-400"
             >
-              <FaInstagram className="text-typography dark:text-typography-dark text-3xl transform transition duration-200 hover:scale-110" />
-            </M.a>
-            <M.a
+              <FaInstagram className="text-typography dark:text-typography-dark text-3xl transform transition duration-200 group-hover:scale-110" />
+            </a>
+            <a
               href={resumeUrl}
               target="_blank"
               rel="noreferrer"
-              initial={fadeIn.icons.initial}
-              animate={fadeIn.icons.animate}
-              transition={{ ...fadeIn.icons.transition, delay: 1.9 }}
-              className="mx-7 p-3 rounded-full border-2 border-primary-200 dark:border-primary-dark-200 hover:border-secondary-200 dark:hover:border-secondary-dark-400"
+              className="group mx-7 p-3 rounded-full border-2 border-primary-200 dark:border-primary-dark-200 hover:border-secondary-200 dark:hover:border-secondary-dark-400"
             >
-              <HiOutlineDocumentText className="text-typography dark:text-typography-dark text-3xl transform transition duration-200 hover:scale-110" />
-            </M.a>
+              <HiOutlineDocumentText className="text-typography dark:text-typography-dark text-3xl transform transition duration-200 group-hover:scale-110" />
+            </a>
           </div>
         </div>
         <div className="w-11/12 lg:w-3/4 2xl:w-1/2">
@@ -252,14 +307,15 @@ export default function Contact({ data }) {
             <FormInput
               label={"Name:"}
               placeholder="Your Name"
-              value={name}
+              value={formFields.name}
               setValue={(name) => {
                 resetErrorValidation(
                   "name",
                   formFieldErrors,
                   setFormFieldErrors
                 );
-                setName(name);
+                resetResponse();
+                setFormField("name", name);
               }}
               id="input-name"
             />
@@ -268,14 +324,15 @@ export default function Contact({ data }) {
               label={"Email:"}
               type="email"
               placeholder="email@domain.com"
-              value={email}
+              value={formFields.email}
               setValue={(email) => {
                 resetErrorValidation(
                   "email",
                   formFieldErrors,
                   setFormFieldErrors
                 );
-                setEmail(email);
+                resetResponse();
+                setFormField("email", email);
               }}
               id="input-email"
             />
@@ -284,14 +341,18 @@ export default function Contact({ data }) {
               label={"Phone Number:"}
               type="tel"
               placeholder="Your Phone Number"
-              value={formatPhoneNumber(phoneNumber)}
+              value={formatPhoneNumber(formFields.phoneNumber)}
               setValue={(phoneNumber) => {
                 resetErrorValidation(
                   "phoneNumber",
                   formFieldErrors,
                   setFormFieldErrors
                 );
-                setPhoneNumber(filterOnlyAlphanumeric(phoneNumber));
+                resetResponse();
+                setFormField(
+                  "phoneNumber",
+                  filterOnlyAlphanumeric(phoneNumber)
+                );
               }}
               id="input-phone-number"
             />
@@ -299,14 +360,15 @@ export default function Contact({ data }) {
             <FormInput
               label={"Subject:"}
               placeholder="Your Subject"
-              value={subject}
+              value={formFields.subject}
               setValue={(subject) => {
                 resetErrorValidation(
                   "subject",
                   formFieldErrors,
                   setFormFieldErrors
                 );
-                setSubject(subject);
+                resetResponse();
+                setFormField("subject", subject);
               }}
               id="input-subject"
             />
@@ -314,14 +376,15 @@ export default function Contact({ data }) {
             <FormInput
               label={"Message:"}
               placeholder="Your Message"
-              value={message}
+              value={formFields.message}
               setValue={(message) => {
                 resetErrorValidation(
                   "message",
                   formFieldErrors,
                   setFormFieldErrors
                 );
-                setMessage(message);
+                resetResponse();
+                setFormField("message", message);
               }}
               isTextArea
               id="input-message"
@@ -329,7 +392,13 @@ export default function Contact({ data }) {
             <ValidationError errorMessage={formFieldErrors.message} />
           </form>
         </div>
-        <Button label="Submit" type="submit" onClick={handleSubmitForm} />
+        <Button
+          label="Submit"
+          type="submit"
+          onClick={handleSubmitForm}
+          loading={sendingEmailLoading}
+        />
+        <EmailSentResponseMessage response={sendingEmailResponse} />
       </M.div>
     </Layout>
   );
