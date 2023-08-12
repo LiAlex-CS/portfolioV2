@@ -40,6 +40,7 @@ export default function Home({ data }) {
               className="p-4"
             >
               <StaticImage
+                quality={90}
                 src="../assets/images/profile_picture.webp"
                 width={256}
                 className="rounded-full"
