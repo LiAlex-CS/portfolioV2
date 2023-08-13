@@ -73,7 +73,6 @@ export default function Experience({ data }) {
   );
 
   const skills = data.allContentfulSkill.nodes.map((node) => node.skill);
-  console.log(skills.length);
 
   return (
     <Layout>

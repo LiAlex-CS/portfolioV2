@@ -3,12 +3,11 @@ const isFieldEmpty = (field) => {
 };
 
 const isInvalidEmail = (email) => {
-  const isValidEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
+  const isValidEmail = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
   return !isValidEmail;
 };
 
 const isInvalidPhoneNumber = (phoneNumber) => {
-  console.log(phoneNumber);
   const isValidPhoneNumber = /^[0-9]{7,15}$/.test(phoneNumber);
   return !isValidPhoneNumber;
 };
