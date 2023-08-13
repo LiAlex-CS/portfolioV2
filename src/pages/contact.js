@@ -15,6 +15,7 @@ import {
 } from "../services/form_validation/validation";
 import { FiAlertCircle } from "react-icons/fi";
 import { BsCheckCircle, BsXCircle } from "react-icons/bs";
+import { useRecaptcha } from "../services/recaptchaV3/useRecaptcha";
 
 const FormInput = ({
   label,
@@ -114,6 +115,8 @@ export default function Contact({ data }) {
     message: null,
   });
   const [sendingEmailResponse, setSendingEmailResponse] = useState(null);
+
+  const { reCaptchaLoaded, generateReCaptchaToken } = useRecaptcha();
 
   const setFormField = (field, value) => {
     const newFormFields = { ...formFields };
@@ -224,6 +227,7 @@ export default function Contact({ data }) {
       )
     ) {
       try {
+        await generateReCaptchaToken("submit");
         const sentEmailResponse = await sendEmail();
         setFormFields({
           name: "",
@@ -397,6 +401,7 @@ export default function Contact({ data }) {
           type="submit"
           onClick={handleSubmitForm}
           loading={sendingEmailLoading}
+          disabled={!reCaptchaLoaded}
         />
         <EmailSentResponseMessage response={sendingEmailResponse} />
       </M.div>
