@@ -6,11 +6,11 @@ import {
   EMAIL_TEMPLATE_ID,
 } from "./config";
 
-export const useSendEmail = (options) => {
+export const useSendEmail = () => {
   useEffect(() => emailjs.init(EMAIL_PUBLIC_KEY), []);
   const [sendingEmailLoading, setSendingEmailLoading] = useState(false);
 
-  const sendEmail = async () => {
+  const sendEmail = async (options) => {
     try {
       setSendingEmailLoading(true);
       return await emailjs.send(EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, options);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Layout from "../components/Layout";
 import { H3, P, Title } from "../components/Typography/Text";
 import { motion as M } from "framer-motion";
@@ -15,7 +15,7 @@ import {
 } from "../services/form_validation/validation";
 import { FiAlertCircle } from "react-icons/fi";
 import { BsCheckCircle, BsXCircle } from "react-icons/bs";
-import { useRecaptcha } from "../services/recaptchaV3/useRecaptcha";
+import Recaptcha from "../services/recaptchaV2/recaptcha";
 
 const FormInput = ({
   label,
@@ -100,6 +100,8 @@ const EmailSentResponseMessage = ({ response }) => {
 export default function Contact({ data }) {
   const resumeUrl = data.contentfulFile.file.file.url;
 
+  const recaptchaRef = useRef();
+
   const [formFields, setFormFields] = useState({
     name: "",
     email: "",
@@ -115,8 +117,10 @@ export default function Contact({ data }) {
     message: null,
   });
   const [sendingEmailResponse, setSendingEmailResponse] = useState(null);
+  const [recaptchaToken, setRecaptchaToken] = useState(null);
+  const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
 
-  const { reCaptchaLoaded, generateReCaptchaToken } = useRecaptcha();
+  // const { recaptchaLoaded, recaptchaToken, Recaptcha } = useRecaptcha();
 
   const setFormField = (field, value) => {
     const newFormFields = { ...formFields };
@@ -200,13 +204,7 @@ export default function Contact({ data }) {
     }
   };
 
-  const { sendingEmailLoading, sendEmail } = useSendEmail({
-    name: formFields.name,
-    email: formFields.email,
-    phoneNumber: formatPhoneNumber(formFields.phoneNumber),
-    subject: formFields.subject,
-    message: formFields.message,
-  });
+  const { sendingEmailLoading, sendEmail } = useSendEmail();
 
   const handleSubmitForm = async () => {
     handleValidation(
@@ -227,8 +225,14 @@ export default function Contact({ data }) {
       )
     ) {
       try {
-        await generateReCaptchaToken("submit");
-        const sentEmailResponse = await sendEmail();
+        const sentEmailResponse = await sendEmail({
+          name: formFields.name,
+          email: formFields.email,
+          phoneNumber: formatPhoneNumber(formFields.phoneNumber),
+          subject: formFields.subject,
+          message: formFields.message,
+          "g-recaptcha-response": recaptchaToken,
+        });
         setFormFields({
           name: "",
           email: "",
@@ -236,6 +240,7 @@ export default function Contact({ data }) {
           subject: "",
           message: "",
         });
+        recaptchaRef.current.reset();
         setSendingEmailResponse(sentEmailResponse);
       } catch (error) {
         setSendingEmailResponse(error);
@@ -246,6 +251,7 @@ export default function Contact({ data }) {
           subject: "",
           message: "",
         });
+        recaptchaRef.current.reset();
       }
     }
   };
@@ -396,12 +402,21 @@ export default function Contact({ data }) {
             <ValidationError errorMessage={formFieldErrors.message} />
           </form>
         </div>
+        <Recaptcha
+          onCompleted={(token) => {
+            setRecaptchaToken(token);
+          }}
+          onRendered={() => {
+            setRecaptchaLoaded(true);
+          }}
+          innerRef={recaptchaRef}
+        />
         <Button
           label="Submit"
           type="submit"
           onClick={handleSubmitForm}
           loading={sendingEmailLoading}
-          disabled={!reCaptchaLoaded}
+          disabled={!recaptchaLoaded || !recaptchaToken}
         />
         <EmailSentResponseMessage response={sendingEmailResponse} />
       </M.div>
