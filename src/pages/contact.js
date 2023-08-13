@@ -209,6 +209,12 @@ export default function Contact({ data }) {
   });
 
   const handleSubmitForm = async () => {
+    console.log(process.env.CONTENTFUL_SPACE_ID);
+    console.log(process.env.CONTENTFUL_DELIVERY_TOKEN);
+    console.log(process.env.EMAIL_PUBLIC_KEY);
+    console.log(process.env.EMAIL_SERVICE_ID);
+    console.log(process.env.EMAIL_TEMPLATE_ID);
+    console.log(process.env.RECAPTCHA_SITE_KEY);
     handleValidation(
       formFields.name,
       formFields.email,
