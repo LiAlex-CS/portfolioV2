@@ -18,7 +18,7 @@ export const H1 = ({ children, className }) => {
   return (
     <h1
       className={twMerge(
-        "text-5xl font-semibold text-typography dark:text-typography-dark font-body ",
+        "text-5xl font-semibold text-typography dark:text-typography-dark font-body",
         className
       )}
     >
@@ -31,7 +31,7 @@ export const H2 = ({ children, className }) => {
   return (
     <h2
       className={twMerge(
-        "text-4xl font-semibold text-typography dark:text-typography-dark font-body ",
+        "text-4xl font-semibold text-typography dark:text-typography-dark font-body",
         className
       )}
     >
@@ -44,7 +44,7 @@ export const H3 = ({ children, className }) => {
   return (
     <h3
       className={twMerge(
-        "text-2xl font-medium text-typography dark:text-typography-dark font-body ",
+        "text-2xl font-medium text-typography dark:text-typography-dark font-body",
         className
       )}
     >
@@ -57,7 +57,7 @@ export const H4 = ({ children, className }) => {
   return (
     <h4
       className={twMerge(
-        "text-xl font-medium text-typography dark:text-typography-dark font-body ",
+        "text-xl font-medium text-typography dark:text-typography-dark font-body",
         className
       )}
     >
@@ -70,7 +70,7 @@ export const PLarge = ({ children, className }) => {
   return (
     <p
       className={twMerge(
-        "text-xl font-normal text-typography dark:text-typography-dark font-body ",
+        "text-xl font-normal text-typography dark:text-typography-dark font-body",
         className
       )}
     >
@@ -83,7 +83,7 @@ export const P = ({ children, className }) => {
   return (
     <p
       className={twMerge(
-        "text-base font-normal text-typography dark:text-typography-dark font-body ",
+        "text-base font-normal text-typography dark:text-typography-dark font-body",
         className
       )}
     >
