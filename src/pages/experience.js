@@ -35,16 +35,16 @@ const ScrollingToolSet = ({ tools, className }) => {
 
 const ExperienceCard = ({
   id,
-  imgSrc,
+  imageData,
   title,
   position,
   dateRange,
   detailPoints,
 }) => {
   return (
-    <div className="rounded-3xl bg-primary-400 dark:bg-primary-dark-200 flex flex-row flex-wrap text-start items-center my-8 w-11/12 lg:w-3/4 2xl:w-1/2">
+    <div className="rounded-3xl bg-primary-400 dark:bg-primary-dark-200 flex flex-row flex-wrap text-start items-center my-8 w-11/12 lg:w-3/4 2xl:w-1/2 py-6">
       <div className="mx-3">
-        <GatsbyImage image={getImage(imgSrc)} alt={imgSrc.description} />
+        <GatsbyImage image={getImage(imageData)} alt={imageData.description} />
       </div>
       <div className="flex flex-col mx-5 flex-1">
         <div className="flex flex-row justify-between items-end my-3">
@@ -107,7 +107,7 @@ export default function Experience({ data }) {
             title={experience.companyName}
             dateRange={experience.dateRange}
             position={experience.positionTitle}
-            imgSrc={experience.picture}
+            imageData={experience.picture}
             detailPoints={experience.descriptionPoints}
             key={experience.id}
           />
