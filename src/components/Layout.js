@@ -17,6 +17,8 @@ const BackgroundBlob = ({ className }) => {
 export default function Layout({ children }) {
   const { isDarkMode } = useContext(ThemeContext);
 
+  console.log(isDarkMode);
+
   return (
     <div
       className={`min-h-screen min-w-screen ${
