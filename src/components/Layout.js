@@ -29,6 +29,8 @@ export default function Layout({ children }) {
       <BackgroundBlob className="bg-gradient-to-bl from-secondary-400 to-amber-300 dark:from-secondary-dark-400 dark:to-red-800 w-96 h-96 -mb-96 -mr-96 top-[40%] left-[60%] filter blur-lg" />
       <BackgroundBlob className="bg-gradient-to-l from-secondary-600 to-amber-500 dark:from-secondary-dark-600 dark:to-red-800 w-40 h-40 -mb-40 -mr-40 top-1/2 left-1/2 filter blur-lg opacity-80" />
       <BackgroundBlob className="bg-amber-400 dark:bg-amber-600 w-48 h-48 -mb-48 -mr-48 top-1/4 left-[70%] filter blur-md opacity-60" />
+      <BackgroundBlob className="bg-gradient-to-tr from-secondary-200 to-amber-200 dark:from-secondary-dark-200 dark:to-red-600 w-72 h-72 -mb-72 -mr-72 top-[65%] left-[70%] filter blur-lg opacity-60" />
+      <BackgroundBlob className="bg-secondary-300 dark:bg-secondary-dark-300 w-48 h-48 -mb-48 -mr-48 top-[55%] left-[80%] filter blur-lg opacity-70" />
       <Navbar />
       <div className="z-10 relative">{children}</div>
     </div>
