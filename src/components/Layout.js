@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Navbar from "./Navbar/Navbar";
 import { ThemeContext } from "./Context";
 import { twMerge } from "tailwind-merge";
@@ -16,14 +16,19 @@ const BackgroundBlob = ({ className }) => {
 
 export default function Layout({ children }) {
   const { isDarkMode } = useContext(ThemeContext);
+  const [isClient, setIsClient] = useState(false);
 
-  console.log(isDarkMode);
+  // Force rerender to trigger theme on PROD
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
     <div
       className={`min-h-screen min-w-screen ${
         isDarkMode ? "dark:bg-primary-dark-100 dark" : "bg-primary-500"
       }`}
+      key={isClient}
     >
       <BackgroundBlob className="bg-gradient-to-br from-secondary-200 to-amber-200 dark:from-secondary-dark-200 dark:to-red-600 w-96 h-96 -mb-96 -mr-96 top-1/4 left-[20%] filter blur-lg" />
       <BackgroundBlob className="bg-secondary-300 dark:bg-secondary-dark-300 w-72 h-72 -mb-72 -mr-72 top-1/2 left-1/4 filter blur-lg opacity-75" />
