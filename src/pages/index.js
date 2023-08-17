@@ -105,7 +105,7 @@ export default function Home({ data }) {
 }
 
 export const query = graphql`
-  query MyQuery {
+  query HomeQuery {
     contentfulIntroText {
       text {
         text
