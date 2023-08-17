@@ -1,12 +1,14 @@
 import React, { createContext, useState } from "react";
 
-export const ThemeContext = createContext({});
+const isLocalStorageThemeDark = () => {
+  return localStorage.getItem("theme") === "dark";
+};
+
+export const ThemeContext = createContext({
+  isDarkMode: isLocalStorageThemeDark(),
+});
 
 export const AppProvider = ({ children }) => {
-  const isLocalStorageThemeDark = () => {
-    return localStorage.getItem("theme") === "dark";
-  };
-
   const [isDarkMode, setDarkMode] = useState(isLocalStorageThemeDark());
 
   const setLocalStorageTheme = (isDarkMode) => {
