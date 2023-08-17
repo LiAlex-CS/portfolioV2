@@ -5,7 +5,7 @@ const isLocalStorageThemeDark = () => {
 };
 
 export const ThemeContext = createContext({
-  isDarkMode: isLocalStorageThemeDark(),
+  isDarkMode: false,
 });
 
 export const AppProvider = ({ children }) => {
