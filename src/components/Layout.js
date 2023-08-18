@@ -25,7 +25,7 @@ export default function Layout({ children }) {
 
   return (
     <div
-      className={`min-h-screen min-w-screen ${
+      className={`min-h-screen min-w-full ${
         isDarkMode ? "dark:bg-primary-dark-100 dark" : "bg-primary-500"
       }`}
       key={isClient}
