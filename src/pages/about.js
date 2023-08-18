@@ -7,6 +7,29 @@ import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { twMerge } from "tailwind-merge";
 
+const seperateParagraphs = (text) => {
+  let paragraphs = [];
+  let currentParagraph = "";
+  let index = 0;
+  while (index < text.length) {
+    const currentChar = text[index];
+    if (
+      currentChar === "\\" &&
+      index + 1 < text.length &&
+      text[index + 1] === "n"
+    ) {
+      paragraphs.push(currentParagraph);
+      currentParagraph = "";
+      index += 2;
+    } else {
+      currentParagraph += currentChar;
+      index += 1;
+    }
+  }
+  paragraphs.push(currentParagraph);
+  return paragraphs;
+};
+
 const AboutMeSection = ({ header, body, imageData, caption, className }) => {
   const isIntro = header === "Introduction";
 
@@ -23,7 +46,9 @@ const AboutMeSection = ({ header, body, imageData, caption, className }) => {
         }`}
       >
         {!isIntro ? <H2 className="mb-10">{header}</H2> : null}
-        <PLarge>{body}</PLarge>
+        {seperateParagraphs(body).map((paragraph) => (
+          <PLarge className="my-3">{paragraph}</PLarge>
+        ))}
       </div>
       {imageData ? (
         <div className="rounded-3xl flex flex-col my-10 bg-primary-400 dark:bg-primary-dark-200 max-w-2xl mx-7">
