@@ -29,23 +29,3 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
   @apply bg-gray-100 border border-gray-300 text-typography text-sm rounded-lg focus:ring-secondary-500 focus:border-secondary-500 block w-full p-2.5 focus:outline-none font-[Urbanist];
 }
-
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 5px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
