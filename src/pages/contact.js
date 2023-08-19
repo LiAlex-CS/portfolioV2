@@ -283,7 +283,12 @@ export default function Contact({ data }) {
         <div className="my-20">
           <Title>{strings.TITLE}</Title>
         </div>
-        <div className="flex flex-row flex-wrap justify-center">
+        <M.div
+          initial={fadeIn.initial}
+          animate={fadeIn.animate}
+          transition={{ ...fadeIn.transition, delay: 0.3 }}
+          className="flex flex-row flex-wrap justify-center"
+        >
           <div className="flex flex-row my-12 md:mt-6">
             <a
               href="https://www.linkedin.com/in/zishu-alex-li-54b35718b/"
@@ -320,8 +325,13 @@ export default function Contact({ data }) {
               <HiOutlineDocumentText className="text-typography dark:text-typography-dark text-3xl transform transition duration-200 group-hover:scale-110" />
             </a>
           </div>
-        </div>
-        <div className="w-11/12 lg:w-3/4 2xl:w-1/2">
+        </M.div>
+        <M.div
+          initial={fadeIn.initial}
+          animate={fadeIn.animate}
+          transition={{ ...fadeIn.transition, delay: 0.6 }}
+          className="w-11/12 lg:w-3/4 2xl:w-1/2"
+        >
           <form>
             <FormInput
               label={strings.FORM.NAME.label}
@@ -410,24 +420,36 @@ export default function Contact({ data }) {
             />
             <ValidationError errorMessage={formFieldErrors.message} />
           </form>
-        </div>
-        <Recaptcha
-          onCompleted={(token) => {
-            setRecaptchaToken(token);
-          }}
-          onRendered={() => {
-            setRecaptchaLoaded(true);
-          }}
-          innerRef={recaptchaRef}
-        />
-        <Button
-          label={strings.SUBMIT}
-          type="submit"
-          onClick={handleSubmitForm}
-          loading={sendingEmailLoading}
-          disabled={!recaptchaLoaded || !recaptchaToken}
-        />
-        <EmailSentResponseMessage response={sendingEmailResponse} />
+        </M.div>
+        <M.div
+          initial={fadeIn.initial}
+          animate={fadeIn.animate}
+          transition={{ ...fadeIn.transition, delay: 0.9 }}
+        >
+          <Recaptcha
+            onCompleted={(token) => {
+              setRecaptchaToken(token);
+            }}
+            onRendered={() => {
+              setRecaptchaLoaded(true);
+            }}
+            innerRef={recaptchaRef}
+          />
+        </M.div>
+        <M.div
+          initial={fadeIn.initial}
+          animate={fadeIn.animate}
+          transition={{ ...fadeIn.transition, delay: 1.2 }}
+        >
+          <Button
+            label={strings.SUBMIT}
+            type="submit"
+            onClick={handleSubmitForm}
+            loading={sendingEmailLoading}
+            disabled={!recaptchaLoaded || !recaptchaToken}
+          />
+          <EmailSentResponseMessage response={sendingEmailResponse} />
+        </M.div>
       </M.div>
     </Layout>
   );
