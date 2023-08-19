@@ -126,7 +126,7 @@ export const query = graphql`
         descriptionPoints
         positionTitle
         picture {
-          gatsbyImageData(width: 200)
+          gatsbyImageData(width: 200, quality: 70)
           description
         }
         companyName
