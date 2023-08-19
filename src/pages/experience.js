@@ -89,6 +89,7 @@ export default function Experience({ data }) {
           initial={fadeIn.initial}
           animate={fadeIn.animate}
           transition={{ ...fadeIn.transition, delay: 0.3 }}
+          className="overflow-x-hidden"
         >
           <H3 className="mb-16">{strings.TOOLS_I_USE}</H3>
           <ScrollingToolSet className="mb-16" tools={skills} />
