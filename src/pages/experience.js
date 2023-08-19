@@ -85,31 +85,51 @@ export default function Experience({ data }) {
         exit={fadeIn.exit}
       >
         <Title className="my-16 lg:my-28 xl:my-36">{strings.TITLE}</Title>
-        <H3 className="mb-16">{strings.TOOLS_I_USE}</H3>
-        <ScrollingToolSet className="mb-16" tools={skills} />
-        <H3 className="max-w-lg">{strings.CONSTRUCTION_TOOLS}</H3>
-        <div className="flex flex-row justify-center flex-wrap">
-          <div className="flex flex-row my-14">
-            <SiGatsby className=" text-6xl mx-12 text-typography dark:text-typography-dark" />
-            <SiReact className=" text-6xl mx-12 text-typography dark:text-typography-dark" />
+        <M.div
+          initial={fadeIn.initial}
+          animate={fadeIn.animate}
+          transition={{ ...fadeIn.transition, delay: 0.3 }}
+        >
+          <H3 className="mb-16">{strings.TOOLS_I_USE}</H3>
+          <ScrollingToolSet className="mb-16" tools={skills} />
+        </M.div>
+        <M.div
+          initial={fadeIn.initial}
+          animate={fadeIn.animate}
+          transition={{ ...fadeIn.transition, delay: 0.6 }}
+          className="flex text-center flex-col items-center"
+        >
+          <H3 className="max-w-lg">{strings.CONSTRUCTION_TOOLS}</H3>
+          <div className="flex flex-row justify-center flex-wrap">
+            <div className="flex flex-row my-14">
+              <SiGatsby className=" text-6xl mx-12 text-typography dark:text-typography-dark" />
+              <SiReact className=" text-6xl mx-12 text-typography dark:text-typography-dark" />
+            </div>
+            <div className="flex flex-row my-14">
+              <SiTailwindcss className=" text-6xl mx-12 text-typography dark:text-typography-dark" />
+              <SiContentful className=" text-6xl mx-12 text-typography dark:text-typography-dark" />
+            </div>
           </div>
-          <div className="flex flex-row my-14">
-            <SiTailwindcss className=" text-6xl mx-12 text-typography dark:text-typography-dark" />
-            <SiContentful className=" text-6xl mx-12 text-typography dark:text-typography-dark" />
-          </div>
-        </div>
-        <H3 className="max-w-lg my-4">{strings.EXPERIENCES}</H3>
-        {sortedExperiences.map((experience) => (
-          <ExperienceCard
-            id={experience.id}
-            title={experience.companyName}
-            dateRange={experience.dateRange}
-            position={experience.positionTitle}
-            imageData={experience.picture}
-            detailPoints={experience.descriptionPoints}
-            key={experience.id}
-          />
-        ))}
+        </M.div>
+        <M.div
+          initial={fadeIn.initial}
+          animate={fadeIn.animate}
+          transition={{ ...fadeIn.transition, delay: 0.9 }}
+          className="w-full flex flex-col items-center"
+        >
+          <H3 className="max-w-lg my-4">{strings.EXPERIENCES}</H3>
+          {sortedExperiences.map((experience) => (
+            <ExperienceCard
+              id={experience.id}
+              title={experience.companyName}
+              dateRange={experience.dateRange}
+              position={experience.positionTitle}
+              imageData={experience.picture}
+              detailPoints={experience.descriptionPoints}
+              key={experience.id}
+            />
+          ))}
+        </M.div>
       </M.div>
     </Layout>
   );
