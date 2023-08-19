@@ -42,19 +42,19 @@ const ExperienceCard = ({
   detailPoints,
 }) => {
   return (
-    <div className="rounded-3xl bg-primary-400 dark:bg-primary-dark-200 flex flex-row flex-wrap text-start items-center my-8 w-11/12 lg:w-3/4 2xl:w-1/2 py-6">
-      <div className="mx-3">
+    <div className="rounded-3xl bg-primary-400 dark:bg-primary-dark-200 flex flex-row flex-wrap text-start justify-center items-center my-8 w-11/12 lg:w-3/4 2xl:w-1/2 py-6">
+      <div className="flex mx-3 justify-center my-4 sm:my-0">
         <GatsbyImage image={getImage(imageData)} alt={imageData.description} />
       </div>
       <div className="flex flex-col mx-5 flex-1">
-        <div className="flex flex-row justify-between items-end my-3">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end my-3">
           <H2>{title}</H2>
-          <P>{dateRange}</P>
+          <P className="my-2 sm:my-0">{dateRange}</P>
         </div>
         <div className="my-3">
           <H3>{position}</H3>
         </div>
-        <ul className="list-disc mb-3 marker:text-typography dark:marker:text-typography-dark">
+        <ul className="list-disc mb-3 marker:text-typography dark:marker:text-typography-dark mx-3 md:mx-0">
           {detailPoints.map((detailPoint, index) => (
             <li key={`${id}-${index}`}>
               <PLarge>{detailPoint}</PLarge>
