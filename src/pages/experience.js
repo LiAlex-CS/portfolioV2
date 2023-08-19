@@ -86,8 +86,8 @@ export default function Experience({ data }) {
       >
         <Title className="my-16 lg:my-28 xl:my-36">{strings.TITLE}</Title>
         <M.div
-          initial={fadeIn.initial}
-          animate={fadeIn.animate}
+          initial={{ ...fadeIn.initial, overflowX: "hidden" }}
+          animate={{ ...fadeIn.animate, overflowX: "hidden" }}
           transition={{ ...fadeIn.transition, delay: 0.3 }}
           className="overflow-x-hidden"
         >
