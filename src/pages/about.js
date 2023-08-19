@@ -89,9 +89,9 @@ export default function About({ data }) {
               initial={fadeIn.initial}
               animate={fadeIn.animate}
               transition={{ ...fadeIn.transition, delay: 0.3 * (index + 1) }}
+              key={section.contentful_id}
             >
               <AboutMeSection
-                key={section.contentful_id}
                 header={section.header}
                 body={section.body.body}
                 imageData={section.image}
