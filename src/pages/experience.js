@@ -27,7 +27,7 @@ const ScrollingToolSet = ({ tools, className }) => {
   );
 
   return (
-    <div className="w-full my-3 overflow-hidden flex flex-row">
+    <div className="w-full my-3 flex flex-row">
       <ToolsList />
       <ToolsList />
     </div>
@@ -78,7 +78,7 @@ export default function Experience({ data }) {
   return (
     <Layout>
       <M.div
-        className="flex flex-col w-full text-center items-center"
+        className="flex flex-col w-full text-center items-center overflow-x-hidden"
         initial={fadeIn.initial}
         animate={fadeIn.animate}
         transition={fadeIn.transition}
