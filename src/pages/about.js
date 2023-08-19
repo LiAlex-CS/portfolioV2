@@ -46,8 +46,10 @@ const AboutMeSection = ({ header, body, imageData, caption, className }) => {
         }`}
       >
         {!isIntro ? <H2 className="mb-10">{header}</H2> : null}
-        {seperateParagraphs(body).map((paragraph) => (
-          <PLarge className="my-3">{paragraph}</PLarge>
+        {seperateParagraphs(body).map((paragraph, index) => (
+          <PLarge className="my-3" key={`${header}-${index}`}>
+            {paragraph}
+          </PLarge>
         ))}
       </div>
       {imageData ? (
