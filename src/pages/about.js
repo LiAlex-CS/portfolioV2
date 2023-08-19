@@ -6,6 +6,7 @@ import { fadeIn } from "../styles/animations";
 import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { twMerge } from "tailwind-merge";
+import strings from "../static_strings/about.strings";
 
 const seperateParagraphs = (text) => {
   let paragraphs = [];
@@ -81,7 +82,7 @@ export default function About({ data }) {
         transition={fadeIn.transition}
         exit={fadeIn.exit}
       >
-        <Title className="my-16 lg:mt-28 xl:mt-36">A Little About Me</Title>
+        <Title className="my-16 lg:mt-28 xl:mt-36">{strings.TITLE}</Title>
         {sortedAboutMeData.map((section) => {
           return (
             <AboutMeSection

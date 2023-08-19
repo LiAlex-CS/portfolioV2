@@ -16,6 +16,7 @@ import {
 import { FiAlertCircle } from "react-icons/fi";
 import { BsCheckCircle, BsXCircle } from "react-icons/bs";
 import Recaptcha from "../services/recaptchaV2/recaptcha";
+import strings from "../static_strings/contact.strings";
 
 const FormInput = ({
   label,
@@ -80,7 +81,7 @@ const EmailSentResponseMessage = ({ response }) => {
         <div className="flex flex-row items-center my-4">
           <BsCheckCircle className="text-green-500 dark:text-green-600 mx-3" />
           <P className="text-green-500 dark:text-green-600">
-            Your message was sent successfully!
+            {strings.VALIDATION.SUCCESS}
           </P>
         </div>
       );
@@ -89,7 +90,7 @@ const EmailSentResponseMessage = ({ response }) => {
         <div className="flex flex-row items-center my-4">
           <BsXCircle className="text-red-500 dark:text-red-600 mx-3" />
           <P className="text-red-500 dark:text-red-600">
-            There was an error sending your message. Try again later.
+            {strings.VALIDATION.FAILURE}
           </P>
         </div>
       );
@@ -262,6 +263,14 @@ export default function Contact({ data }) {
     }
   };
 
+  const FORM_INPUT_ENUM = {
+    NAME: "name",
+    EMAIL: "email",
+    PHONE_NUMBER: "phoneNumber",
+    SUBJECT: "subject",
+    MESSAGE: "message",
+  };
+
   return (
     <Layout>
       <M.div
@@ -272,7 +281,7 @@ export default function Contact({ data }) {
         exit={fadeIn.exit}
       >
         <div className="my-20">
-          <Title>Contact Me</Title>
+          <Title>{strings.TITLE}</Title>
         </div>
         <div className="flex flex-row flex-wrap justify-center">
           <div className="flex flex-row my-12 md:mt-6">
@@ -315,52 +324,52 @@ export default function Contact({ data }) {
         <div className="w-11/12 lg:w-3/4 2xl:w-1/2">
           <form>
             <FormInput
-              label={"Name:"}
-              placeholder="Your Name"
+              label={strings.FORM.NAME.label}
+              placeholder={strings.FORM.NAME.placeholder}
               value={formFields.name}
               setValue={(name) => {
                 resetErrorValidation(
-                  "name",
+                  FORM_INPUT_ENUM.NAME,
                   formFieldErrors,
                   setFormFieldErrors
                 );
                 resetResponse();
-                setFormField("name", name);
+                setFormField(FORM_INPUT_ENUM.NAME, name);
               }}
               id="input-name"
             />
             <ValidationError errorMessage={formFieldErrors.name} />
             <FormInput
-              label={"Email:"}
+              label={strings.FORM.EMAIL.label}
               type="email"
-              placeholder="email@domain.com"
+              placeholder={strings.FORM.EMAIL.placeholder}
               value={formFields.email}
               setValue={(email) => {
                 resetErrorValidation(
-                  "email",
+                  FORM_INPUT_ENUM.EMAIL,
                   formFieldErrors,
                   setFormFieldErrors
                 );
                 resetResponse();
-                setFormField("email", email);
+                setFormField(FORM_INPUT_ENUM.EMAIL, email);
               }}
               id="input-email"
             />
             <ValidationError errorMessage={formFieldErrors.email} />
             <FormInput
-              label={"Phone Number:"}
+              label={strings.FORM.PHONE_NUMBER.label}
               type="tel"
-              placeholder="Your Phone Number"
+              placeholder={strings.FORM.PHONE_NUMBER.placeholder}
               value={formatPhoneNumber(formFields.phoneNumber)}
               setValue={(phoneNumber) => {
                 resetErrorValidation(
-                  "phoneNumber",
+                  FORM_INPUT_ENUM.PHONE_NUMBER,
                   formFieldErrors,
                   setFormFieldErrors
                 );
                 resetResponse();
                 setFormField(
-                  "phoneNumber",
+                  FORM_INPUT_ENUM.PHONE_NUMBER,
                   filterOnlyAlphanumeric(phoneNumber)
                 );
               }}
@@ -368,33 +377,33 @@ export default function Contact({ data }) {
             />
             <ValidationError errorMessage={formFieldErrors.phoneNumber} />
             <FormInput
-              label={"Subject:"}
-              placeholder="Your Subject"
+              label={strings.FORM.SUBJECT.label}
+              placeholder={strings.FORM.SUBJECT.placeholder}
               value={formFields.subject}
               setValue={(subject) => {
                 resetErrorValidation(
-                  "subject",
+                  FORM_INPUT_ENUM.SUBJECT,
                   formFieldErrors,
                   setFormFieldErrors
                 );
                 resetResponse();
-                setFormField("subject", subject);
+                setFormField(FORM_INPUT_ENUM.SUBJECT, subject);
               }}
               id="input-subject"
             />
             <ValidationError errorMessage={formFieldErrors.subject} />
             <FormInput
-              label={"Message:"}
-              placeholder="Your Message"
+              label={strings.FORM.MESSAGE.label}
+              placeholder={strings.FORM.MESSAGE.placeholder}
               value={formFields.message}
               setValue={(message) => {
                 resetErrorValidation(
-                  "message",
+                  FORM_INPUT_ENUM.MESSAGE,
                   formFieldErrors,
                   setFormFieldErrors
                 );
                 resetResponse();
-                setFormField("message", message);
+                setFormField(FORM_INPUT_ENUM.MESSAGE, message);
               }}
               isTextArea
               id="input-message"
@@ -412,7 +421,7 @@ export default function Contact({ data }) {
           innerRef={recaptchaRef}
         />
         <Button
-          label="Submit"
+          label={strings.SUBMIT}
           type="submit"
           onClick={handleSubmitForm}
           loading={sendingEmailLoading}

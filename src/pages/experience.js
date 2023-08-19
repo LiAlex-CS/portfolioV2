@@ -8,6 +8,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { graphql } from "gatsby";
 import { twMerge } from "tailwind-merge";
 import { translate } from "../styles/animations";
+import strings from "../static_strings/experience.strings";
 
 const ScrollingToolSet = ({ tools, className }) => {
   const ToolsList = () => (
@@ -83,13 +84,10 @@ export default function Experience({ data }) {
         transition={fadeIn.transition}
         exit={fadeIn.exit}
       >
-        <Title className="my-16 lg:my-28 xl:my-36">Alex Li: Soft Dev</Title>
-        <H3 className="mb-16">Tools that I use:</H3>
+        <Title className="my-16 lg:my-28 xl:my-36">{strings.TITLE}</Title>
+        <H3 className="mb-16">{strings.TOOLS_I_USE}</H3>
         <ScrollingToolSet className="mb-16" tools={skills} />
-        <H3 className="max-w-lg">
-          As an example, the website you are on is constructed with the
-          following tools:
-        </H3>
+        <H3 className="max-w-lg">{strings.CONSTRUCTION_TOOLS}</H3>
         <div className="flex flex-row justify-center flex-wrap">
           <div className="flex flex-row my-14">
             <SiGatsby className=" text-6xl mx-12 text-typography dark:text-typography-dark" />
@@ -100,7 +98,7 @@ export default function Experience({ data }) {
             <SiContentful className=" text-6xl mx-12 text-typography dark:text-typography-dark" />
           </div>
         </div>
-        <H3 className="max-w-lg my-4">Some of my work experiences:</H3>
+        <H3 className="max-w-lg my-4">{strings.EXPERIENCES}</H3>
         {sortedExperiences.map((experience) => (
           <ExperienceCard
             id={experience.id}
