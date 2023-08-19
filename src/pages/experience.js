@@ -27,7 +27,7 @@ const ScrollingToolSet = ({ tools, className }) => {
   );
 
   return (
-    <div className="w-full my-3 flex flex-row">
+    <div className="w-full my-3 flex flex-row overflow-hidden">
       <ToolsList />
       <ToolsList />
     </div>
