@@ -86,10 +86,10 @@ export default function Experience({ data }) {
       >
         <Title className="my-16 lg:my-28 xl:my-36">{strings.TITLE}</Title>
         <M.div
-          initial={{ ...fadeIn.initial, overflowX: "hidden" }}
-          animate={{ ...fadeIn.animate, overflowX: "hidden" }}
+          initial={{ ...fadeIn.initial, overflowX: "hidden", width: "100%" }}
+          animate={{ ...fadeIn.animate, overflowX: "hidden", width: "100%" }}
           transition={{ ...fadeIn.transition, delay: 0.3 }}
-          className="overflow-x-hidden"
+          className="overflow-x-hidden w-full"
         >
           <H3 className="mb-16">{strings.TOOLS_I_USE}</H3>
           <ScrollingToolSet className="mb-16" tools={skills} />
