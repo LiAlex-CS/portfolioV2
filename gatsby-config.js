@@ -47,4 +47,9 @@ module.exports = {
       },
     },
   ],
+  siteMetadata: {
+    title: "Alex Li - Portfolio",
+    description: "Portfolio website for Alex Li.",
+    siteUrl: "https://alexli-portfolio.netlify.app",
+  },
 };
