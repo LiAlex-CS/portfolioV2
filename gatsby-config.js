@@ -51,6 +51,6 @@ module.exports = {
     title: "Alex Li - Portfolio",
     description: "Portfolio website for Alex Li.",
     siteUrl: "https://alex-li.netlify.app",
-    image: "/site_image.webp",
+    image: "/site_image.png",
   },
 };
