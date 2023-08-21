@@ -7,6 +7,7 @@ import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { twMerge } from "tailwind-merge";
 import strings from "../static_strings/about.strings";
+import SEOHead from "../services/metadata/SEO";
 
 const seperateParagraphs = (text) => {
   let paragraphs = [];
@@ -116,6 +117,14 @@ export default function About({ data }) {
     </Layout>
   );
 }
+
+export const Head = () => (
+  <SEOHead
+    title={strings.SEO_TITLE}
+    description={strings.SEO_DESCRIPTION}
+    pathname={strings.PATH}
+  />
+);
 
 export const query = graphql`
   query AboutMeQuery {

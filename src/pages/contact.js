@@ -17,6 +17,7 @@ import { FiAlertCircle } from "react-icons/fi";
 import { BsCheckCircle, BsXCircle } from "react-icons/bs";
 import Recaptcha from "../services/recaptchaV2/recaptcha";
 import strings from "../static_strings/contact.strings";
+import SEOHead from "../services/metadata/SEO";
 
 const FormInput = ({
   label,
@@ -454,6 +455,14 @@ export default function Contact({ data }) {
     </Layout>
   );
 }
+
+export const Head = () => (
+  <SEOHead
+    title={strings.SEO_TITLE}
+    description={strings.SEO_DESCRIPTION}
+    pathname={strings.PATH}
+  />
+);
 
 export const query = graphql`
   query ResumeQuery {

@@ -6,6 +6,7 @@ import { fadeIn } from "../styles/animations";
 import Button from "../components/Button/Button";
 import { navigate } from "gatsby";
 import strings from "../static_strings/404.strings";
+import SEOHead from "../services/metadata/SEO";
 
 export default function Missing() {
   return (
@@ -32,3 +33,7 @@ export default function Missing() {
     </Layout>
   );
 }
+
+export const Head = () => (
+  <SEOHead title={strings.SEO_TITLE} description={strings.SEO_DESCRIPTION} />
+);

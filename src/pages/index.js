@@ -8,6 +8,7 @@ import { graphql } from "gatsby";
 import { PLarge } from "../components/Typography/Text";
 import { motion as M } from "framer-motion";
 import { fadeIn, spin } from "../styles/animations";
+import SEOHead from "../services/metadata/SEO";
 
 export default function Home({ data }) {
   const introText = data.contentfulIntroText.text.text;
@@ -103,6 +104,8 @@ export default function Home({ data }) {
     </Layout>
   );
 }
+
+export const Head = () => <SEOHead />;
 
 export const query = graphql`
   query HomeQuery {

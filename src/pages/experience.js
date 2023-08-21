@@ -9,6 +9,7 @@ import { graphql } from "gatsby";
 import { twMerge } from "tailwind-merge";
 import { translate } from "../styles/animations";
 import strings from "../static_strings/experience.strings";
+import SEOHead from "../services/metadata/SEO";
 
 const ScrollingToolSet = ({ tools, className }) => {
   const ToolsList = () => (
@@ -135,6 +136,14 @@ export default function Experience({ data }) {
     </Layout>
   );
 }
+
+export const Head = () => (
+  <SEOHead
+    title={strings.SEO_TITLE}
+    description={strings.SEO_DESCRIPTION}
+    pathname={strings.PATH}
+  />
+);
 
 export const query = graphql`
   query ExpereinceQuery {
