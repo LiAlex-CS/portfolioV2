@@ -1,5 +1,6 @@
 const TITLE = "A Little About Me";
+const PATH = "/about";
 
-const strings = { TITLE };
+const strings = { TITLE, PATH };
 
 export default strings;

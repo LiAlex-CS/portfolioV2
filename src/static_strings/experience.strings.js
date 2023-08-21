@@ -4,6 +4,8 @@ const CONSTRUCTION_TOOLS =
   "As an example, the website you are on is constructed with the following tools:";
 const EXPERIENCES = "Some of my work experiences:";
 
-const strings = { TITLE, TOOLS_I_USE, CONSTRUCTION_TOOLS, EXPERIENCES };
+const PATH = "/experience";
+
+const strings = { TITLE, TOOLS_I_USE, CONSTRUCTION_TOOLS, EXPERIENCES, PATH };
 
 export default strings;

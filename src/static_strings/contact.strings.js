@@ -29,6 +29,8 @@ const VALIDATION = {
 
 const SUBMIT = "Submit";
 
-const strings = { TITLE, FORM, SUBMIT, VALIDATION };
+const PATH = "/contact";
+
+const strings = { TITLE, FORM, SUBMIT, VALIDATION, PATH };
 
 export default strings;
