@@ -21,16 +21,23 @@ const FORM = {
     placeholder: "Your Message",
   },
 };
-
 const VALIDATION = {
   SUCCESS: "Your message was sent successfully!",
   FAILURE: "There was an error sending your message. Try again later.",
 };
-
 const SUBMIT = "Submit";
-
 const PATH = "/contact";
+const SEO_TITLE = "Contact: Alex Li - Portfolio";
+const SEO_DESCRIPTION = "Contact page in porfolio website for Alex Li.";
 
-const strings = { TITLE, FORM, SUBMIT, VALIDATION, PATH };
+const strings = {
+  TITLE,
+  FORM,
+  SUBMIT,
+  VALIDATION,
+  PATH,
+  SEO_TITLE,
+  SEO_DESCRIPTION,
+};
 
 export default strings;
