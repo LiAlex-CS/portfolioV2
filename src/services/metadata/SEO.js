@@ -28,12 +28,18 @@ const SEO = ({ title, description, pathname, children }) => {
       <meta name="twitter:url" content={seo.url} />
       <meta name="twitter:description" content={seo.description} />
       <meta name="twitter:image" content={seo.image} />
+      <meta name="twitter:image:alt" content={seo.title} />
       <meta property="og:title" content={seo.title} />
       <meta property="og:description" content={seo.description} />
       <meta property="og:image" content={seo.image} />
+      <meta name="og:image:alt" content={seo.title} />
       <meta property="og:url" content={seo.url} />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_US" />
+      <meta
+        name="google-site-verification"
+        content="oH47RY_3ikDGAsg1RvYiT4R6p3VfGwhrUMV6TVKLmw0"
+      />
       {children}
     </>
   );
