@@ -9,6 +9,7 @@ import { PLarge } from "../components/Typography/Text";
 import { motion as M } from "framer-motion";
 import { fadeIn, spin } from "../styles/animations";
 import SEOHead from "../services/metadata/SEO";
+import strings from "../static_strings/index.strings";
 
 export default function Home({ data }) {
   const introText = data.contentfulIntroText.text.text;
@@ -25,7 +26,10 @@ export default function Home({ data }) {
       >
         <div className="flex flex-wrap-reverse items-center justify-center mx-5 overflow-hidden">
           <div className="flex-col">
-            <PortfolioSVG />
+            <h1>
+              <span className="sr-only">{strings.TITLE}</span>
+              <PortfolioSVG />
+            </h1>
             <div className="mt-6 max-w-3xl">
               <PLarge>{introText}</PLarge>
             </div>
@@ -45,7 +49,7 @@ export default function Home({ data }) {
                 src="../assets/images/profile_picture.webp"
                 width={256}
                 className="rounded-full"
-                alt="Profile Picture"
+                alt={strings.PROFILE_HEADSHOT}
               />
             </M.div>
           </M.div>
