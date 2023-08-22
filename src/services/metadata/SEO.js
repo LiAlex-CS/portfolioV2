@@ -23,7 +23,7 @@ const SEO = ({ title, description, pathname, children }) => {
       <meta name="image" content={seo.image} />
       <meta name="robots" content="index, follow" />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta http-equiv="content-language" content="en-us" />
+      <meta httpEquiv="content-language" content="en-us" />
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:url" content={seo.url} />
       <meta name="twitter:description" content={seo.description} />
