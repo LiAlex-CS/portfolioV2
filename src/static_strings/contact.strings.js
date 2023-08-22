@@ -28,7 +28,8 @@ const VALIDATION = {
 const SUBMIT = "Submit";
 const PATH = "/contact";
 const SEO_TITLE = "Contact: Alex Li - Portfolio";
-const SEO_DESCRIPTION = "Contact page in porfolio website for Alex Li.";
+const SEO_DESCRIPTION =
+  "This is the Contact Page on my portfolio website. Reach me with any messages you wish to send here 📞. Alex Li - Contact.";
 
 const strings = {
   TITLE,

@@ -5,7 +5,8 @@ const CONSTRUCTION_TOOLS =
 const EXPERIENCES = "Some of my work experiences:";
 const PATH = "/experience";
 const SEO_TITLE = "Experience: Alex Li - Portfolio";
-const SEO_DESCRIPTION = "Experience page in porfolio website for Alex Li.";
+const SEO_DESCRIPTION =
+  "This is the Experience Page on my portfolio website. Learn about software skillset and past work experiences 👨‍💻. Alex Li - Experience.";
 
 const strings = {
   TITLE,
