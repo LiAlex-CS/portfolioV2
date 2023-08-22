@@ -11,6 +11,8 @@ const Navbar = () => {
 
   const [navbarOpen, setNavbarOpen] = useState(false);
 
+  const LOGO_ALT = "Alex Li Logo";
+
   const data = useStaticQuery(graphql`
     query LogoQuery {
       dark: file(relativePath: { eq: "logo_dark.png" }) {
@@ -33,7 +35,7 @@ const Navbar = () => {
         <Link to="/">
           <GatsbyImage
             image={logo}
-            alt="logo icon"
+            alt={LOGO_ALT}
             className="w-10 transform transition duration-200 hover:scale-110"
           />
         </Link>
