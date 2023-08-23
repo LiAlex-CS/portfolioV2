@@ -6,6 +6,8 @@ import { twMerge } from "tailwind-merge";
 const ThemeButton = ({ className }) => {
   const { isDarkMode, flipDarkTheme } = useContext(ThemeContext);
 
+  const BUTTON_NAME = "Theme button";
+
   return (
     <button
       className={twMerge(
@@ -13,6 +15,7 @@ const ThemeButton = ({ className }) => {
         className
       )}
       onClick={flipDarkTheme}
+      aria-label={BUTTON_NAME}
     >
       {isDarkMode ? <BsMoon /> : <BsSun />}
     </button>
