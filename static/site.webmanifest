@@ -1,6 +1,7 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Alex Li: Portfolio",
+    "short_name": "Alex Li",
+    "description": "Portfolio website for Alex Li.",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -13,7 +14,8 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
-    "display": "standalone"
+    "theme_color": "#fd9635",
+    "background_color": "#edece8",
+    "display": "standalone",
+    "start_url": "/"
 }
