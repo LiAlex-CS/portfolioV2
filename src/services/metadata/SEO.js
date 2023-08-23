@@ -41,6 +41,7 @@ const SEO = ({ title, description, pathname, children }) => {
         content="oH47RY_3ikDGAsg1RvYiT4R6p3VfGwhrUMV6TVKLmw0"
       />
       <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      <link rel="manifest" href="/site.webmanifest" />
       {children}
     </>
   );
