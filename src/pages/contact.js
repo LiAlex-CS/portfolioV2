@@ -102,6 +102,11 @@ const EmailSentResponseMessage = ({ response }) => {
 export default function Contact({ data }) {
   const resumeUrl = data.contentfulFile.file.file.url;
 
+  const LINKEDIN_LINK = "LinkedIn link";
+  const GITHUB_LINK = "Github link";
+  const INSTAGRAM_LINK = "Instagram link";
+  const RESUME_LINK = "Résumé link";
+
   const recaptchaRef = useRef();
 
   const [formFields, setFormFields] = useState({
@@ -121,8 +126,6 @@ export default function Contact({ data }) {
   const [sendingEmailResponse, setSendingEmailResponse] = useState(null);
   const [recaptchaToken, setRecaptchaToken] = useState(null);
   const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
-
-  // const { recaptchaLoaded, recaptchaToken, Recaptcha } = useRecaptcha();
 
   const setFormField = (field, value) => {
     const newFormFields = { ...formFields };
@@ -296,6 +299,7 @@ export default function Contact({ data }) {
               target="_blank"
               rel="noreferrer"
               className="group mx-7 p-3 rounded-full border-2 border-primary-200 dark:border-primary-dark-200 hover:border-secondary-200 dark:hover:border-secondary-dark-400"
+              aria-label={LINKEDIN_LINK}
             >
               <FaLinkedin className="text-typography dark:text-typography-dark text-3xl transform transition duration-200 group-hover:scale-110" />
             </a>
@@ -304,6 +308,7 @@ export default function Contact({ data }) {
               target="_blank"
               rel="noreferrer"
               className="group mx-7 p-3 rounded-full border-2 border-primary-200 dark:border-primary-dark-200 hover:border-secondary-200 dark:hover:border-secondary-dark-400"
+              aria-label={GITHUB_LINK}
             >
               <FaGithub className="text-typography dark:text-typography-dark text-3xl transform transition duration-200 group-hover:scale-110" />
             </a>
@@ -314,6 +319,7 @@ export default function Contact({ data }) {
               target="_blank"
               rel="noreferrer"
               className="group mx-7 p-3 rounded-full border-2 border-primary-200 dark:border-primary-dark-200 hover:border-secondary-200 dark:hover:border-secondary-dark-400"
+              aria-label={INSTAGRAM_LINK}
             >
               <FaInstagram className="text-typography dark:text-typography-dark text-3xl transform transition duration-200 group-hover:scale-110" />
             </a>
@@ -322,6 +328,7 @@ export default function Contact({ data }) {
               target="_blank"
               rel="noreferrer"
               className="group mx-7 p-3 rounded-full border-2 border-primary-200 dark:border-primary-dark-200 hover:border-secondary-200 dark:hover:border-secondary-dark-400"
+              aria-label={RESUME_LINK}
             >
               <HiOutlineDocumentText className="text-typography dark:text-typography-dark text-3xl transform transition duration-200 group-hover:scale-110" />
             </a>

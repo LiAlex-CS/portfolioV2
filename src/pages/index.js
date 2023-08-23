@@ -15,6 +15,11 @@ export default function Home({ data }) {
   const introText = data.contentfulIntroText.text.text;
   const resumeUrl = data.contentfulFile.file.file.url;
 
+  const LINKEDIN_LINK = "LinkedIn link";
+  const GITHUB_LINK = "Github link";
+  const INSTAGRAM_LINK = "Instagram link";
+  const RESUME_LINK = "Résumé link";
+
   return (
     <Layout>
       <M.div
@@ -64,6 +69,7 @@ export default function Home({ data }) {
               animate={fadeIn.icons.animate}
               transition={{ ...fadeIn.icons.transition, delay: 1 }}
               className="group mx-7 p-3 rounded-full border-2 border-primary-200 dark:border-primary-dark-200 hover:border-secondary-200 dark:hover:border-secondary-dark-400"
+              aria-label={LINKEDIN_LINK}
             >
               <FaLinkedin className="text-typography dark:text-typography-dark text-3xl transform transition duration-200 group-hover:scale-110" />
             </M.a>
@@ -75,6 +81,7 @@ export default function Home({ data }) {
               animate={fadeIn.icons.animate}
               transition={{ ...fadeIn.icons.transition, delay: 1.3 }}
               className="group mx-7 p-3 rounded-full border-2 border-primary-200 dark:border-primary-dark-200 hover:border-secondary-200 dark:hover:border-secondary-dark-400"
+              aria-label={GITHUB_LINK}
             >
               <FaGithub className="text-typography dark:text-typography-dark text-3xl transform transition duration-200 group-hover:scale-110" />
             </M.a>
@@ -88,6 +95,7 @@ export default function Home({ data }) {
               animate={fadeIn.icons.animate}
               transition={{ ...fadeIn.icons.transition, delay: 1.6 }}
               className="group mx-7 p-3 rounded-full border-2 border-primary-200 dark:border-primary-dark-200 hover:border-secondary-200 dark:hover:border-secondary-dark-400"
+              aria-label={INSTAGRAM_LINK}
             >
               <FaInstagram className="text-typography dark:text-typography-dark text-3xl transform transition duration-200 group-hover:scale-110" />
             </M.a>
@@ -99,6 +107,7 @@ export default function Home({ data }) {
               animate={fadeIn.icons.animate}
               transition={{ ...fadeIn.icons.transition, delay: 1.9 }}
               className="group mx-7 p-3 rounded-full border-2 border-primary-200 dark:border-primary-dark-200 hover:border-secondary-200 dark:hover:border-secondary-dark-400"
+              aria-label={RESUME_LINK}
             >
               <HiOutlineDocumentText className="text-typography dark:text-typography-dark text-3xl transform transition duration-200 group-hover:scale-110" />
             </M.a>
