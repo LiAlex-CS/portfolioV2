@@ -62,7 +62,7 @@ export default function Home({ data }) {
         <div className="flex flex-row flex-wrap justify-center">
           <div className="flex flex-row my-12 md:mt-6">
             <M.a
-              href="https://www.linkedin.com/in/zishu-alex-li-54b35718b/"
+              href="https://www.linkedin.com/in/alex-li-54b35718b/"
               target="_blank"
               rel="noreferrer"
               initial={fadeIn.icons.initial}
